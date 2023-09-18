@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="tools">
+    <button onclick="redirectUrl(`{% url 'create_portofolio' %}`)" class="btn btn-primary">Create</a>
+</div>
+<div class="portfolio-list">
+    {% for item in items %}
+    <div class="portfolio-item">
+        <h2>{{ item.title }}</h2>
+        <p>{{ item.description }}</p>
+        <div class="image-container">
+            <img src="{{ item.image.url }}" alt="{{ item.title }}">
+        </div>
+        <div class="action-buttons">
+            {% if item.link %}
+            <button onclick="redirectUrl(`{{ item.link }}`)" target="_blank" class="btn btn-secondary">Visit Project</button>
+            {% endif %}
+            <button onclick="redirectUrl(`{% url 'update_portofolio' item.id %}`)" target="_blank" class="btn btn-warning">Edit</button>
+            <button onclick="redirectUrl(`{% url 'delete_portofolio' item.id %}`)" target="_blank" class="btn btn-danger">Delete</button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
