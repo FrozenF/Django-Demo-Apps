@@ -1,2 +1,6 @@
 Django
 Pillow
+pytest
+pytest-django
+psycopg2-binary
+python-dotenv
